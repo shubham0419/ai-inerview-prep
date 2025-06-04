@@ -14,10 +14,10 @@ app.use("/uploads",express.static(path.join(__dirname,"uploads"),{}))
 
 const authRoutes = require("./routes/auth.routes");
 const { generateInterviewQuestion, generateConceptExplaination } = require("./controllers/ai.controller");
-
+const sessionRoutes = require("./routes/session.routes");
 // routes
 app.use("/api/auth", authRoutes) ;
-// app.use('/api/sessions', sessionRoutes);
+app.use('/api/sessions', sessionRoutes);
 // app-use('/api/questions',questionRoutes);
 app.use("/api/ai/generate-questions",protect, generateInterviewQuestion);
 app.use("/api/ai/generate-explanation", protect,generateConceptExplaination);

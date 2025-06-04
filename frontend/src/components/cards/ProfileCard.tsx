@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import { LogOut } from 'lucide-react'
-import { UserImg } from '@/Constants/dataCOnstant'
+import { UserImg } from '@/Constants/dataConstant'
 
 const ProfileCard = () => {
   const user = useSelector((state:RootState)=>state.user.user)
