@@ -16,6 +16,11 @@ const { generateInterviewQuestion, generateConceptExplaination } = require("./co
 const sessionRoutes = require("./routes/session.routes");
 const questionRoutes = require("./routes/question.routes");
 // routes
+
+app.get("/",(req,res)=>{
+  res.send("Server is running")
+})
+
 app.use("/api/auth", authRoutes) ;
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/questions',questionRoutes);
