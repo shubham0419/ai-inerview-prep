@@ -5,6 +5,8 @@ import { RootState } from "@/lib/store";
 import { Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import Banner from "../assets/banner/banner.png"
+import Image from "next/image";
 
 const APP_FEATURES: { id: number, title: string, description: string }[] = [
   {
@@ -74,7 +76,7 @@ export default function Home() {
       <div className="w-full min-h-full relative z-10">
         <div>
           <section className="flex items-center justify-center -mt-36">
-            <img src="https://cdn.dribbble.com/userupload/8367597/file/original-80e26632af0c177fd934874eeeb877b9.png?resize=752x&vertical=center"
+            <Image src={Banner}
               alt="hero-img"
               className="w-[80vw] rounded-lg border-2 border-[#C9FFE2]/40"
             />
