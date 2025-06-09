@@ -2,12 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type SessionState = {
   currentSession: Session | null
-  allSessions: Session[]
+  allSessions: Session[],
+  deleteCount:number
 }
 
 const initialState: SessionState = {
   currentSession: null,
   allSessions: [],
+  deleteCount:0
 }
 
 const sessionSlice = createSlice({
@@ -26,6 +28,9 @@ const sessionSlice = createSlice({
     clearAllSessions(state) {
       state.allSessions = []
     },
+    setDeleteCount(state){
+      state.deleteCount++
+    }
   },
 })
 
@@ -34,6 +39,7 @@ export const {
   clearCurrentSession,
   setAllSessions,
   clearAllSessions,
+  setDeleteCount
 } = sessionSlice.actions
 
 export default sessionSlice.reducer

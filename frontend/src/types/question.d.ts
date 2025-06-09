@@ -16,7 +16,20 @@ declare type createQuestionsPayload = {
   numberOfQuestions:number
 }
 declare type createQuestionsRes = {
-  data:[
-    {question:string,answer:string}
-  ]
+  data:QuestionsType[]
+}
+
+declare type QuestionsType = {question:string,answer:string}
+
+declare type AddtoSessionRes = {
+  questions:Question[]
+}
+
+declare type explainQuestionRes = {
+  data:{title:string,
+  explanation:string}
+}
+
+declare type questionResType  = {
+  question:Question
 }

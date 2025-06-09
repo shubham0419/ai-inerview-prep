@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`${urbanist.variable}  antialiased`}
       >
         <StoreProvider><UserProvider>{children}</UserProvider></StoreProvider>
-        <Toaster/>
+        <Toaster position="top-right"/>
       </body>
     </html>
   );

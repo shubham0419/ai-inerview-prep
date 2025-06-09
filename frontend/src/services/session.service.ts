@@ -40,11 +40,11 @@ export default class SessionService {
   };
 
   static deleteSession = (id:string)=>{
-    return new Promise<imageUploadRes>(async (resolve, reject) => {
+    return new Promise<SingleSessionRes>(async (resolve, reject) => {
       try {
         const res = await axios.delete(API_CONSTANTS.deleteSession.replace("<ID>",id));
         if (res?.data?.status == "failed") throw res.data.message;
-        return resolve(JSON.parse(JSON.stringify(res.data)) as imageUploadRes);
+        return resolve(JSON.parse(JSON.stringify(res.data)) as SingleSessionRes);
       } catch (error: any) {
         return reject(error);
       }
@@ -54,7 +54,7 @@ export default class SessionService {
     static generateQuestions = (payload:createQuestionsPayload) => {
     return new Promise<createQuestionsRes>(async (resolve, reject) => {
       try {
-        const res = await axios.post(API_CONSTANTS.generateQuestions,payload);
+        const res = await axios.get(API_CONSTANTS.generateQuestions);
         if (res?.data?.status == "failed") throw res.data.message;
         return resolve(JSON.parse(JSON.stringify(res.data)) as createQuestionsRes);
       } catch (error: any) {

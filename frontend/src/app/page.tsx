@@ -1,9 +1,9 @@
 "use client"
-
 import ProfileCard from "@/components/cards/ProfileCard";
 import LoginSignupDialog from "@/components/LoginSignupDialog";
 import { RootState } from "@/lib/store";
 import { Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
 const APP_FEATURES: { id: number, title: string, description: string }[] = [
@@ -35,6 +35,7 @@ const APP_FEATURES: { id: number, title: string, description: string }[] = [
 ]
 
 export default function Home() {
+  const router = useRouter();
   const user = useSelector((state:RootState)=>state.user.user);
 
   return (
@@ -62,7 +63,8 @@ export default function Home() {
                 Get role-specific questions, expand answers when you need them, dive deeper into concepts, and organize everything your way.
                 From preparation to mastery - your ultimate interview toolkit is here.
               </p>
-              <button className="bg-black font-semibold text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg duration-300 hover:text-black hover:bg-[#96E8BC] border hover:border-[#96E8BC] transition-colors cursor-pointer">
+              <button onClick={()=>router.push("/dashboard")}
+                className="bg-black font-semibold text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg duration-300 hover:text-black hover:bg-[#96E8BC] border hover:border-[#96E8BC] transition-colors cursor-pointer">
                 Get Started
               </button>
             </div>

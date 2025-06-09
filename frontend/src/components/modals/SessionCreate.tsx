@@ -12,9 +12,11 @@ import SessionService from '@/services/session.service'
 import { useRouter } from 'next/navigation'
 import SpinnerLoader from '../SpinnerLoader'
 import { cn } from '@/lib/utils'
+import QuestionService from '@/services/question.service'
 
 const SessionCreate = () => {
   const sessionService = SessionService;
+  const questionService = QuestionService;
   const [formData, setFormData] = useState({
     role: "",
     experience: "",
@@ -40,7 +42,7 @@ const SessionCreate = () => {
     }
     setError("");
 
-    const response = await sessionService.generateQuestions({role, experience, topicToFocus, numberOfQuestions:10});
+    const response = await questionService.generateQuestions({role, experience, topicToFocus, numberOfQuestions:10});
 
     let res = await sessionService.createSession({...formData,questions:response.data});
     if (res.session) {

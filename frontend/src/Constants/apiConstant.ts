@@ -10,7 +10,7 @@ export default class API_CONSTANTS  {
 
   // AI
   static generateQuestions = this.API_BASE_URL + "/api/ai/generate-questions"
-  static generateExplaination = this.API_BASE_URL + "/api/ai/generate-explaination"
+  static generateExplaination = this.API_BASE_URL + "/api/ai/generate-explanation"
 
   // Session
   static createSession = this.API_BASE_URL + "/api/sessions/create"

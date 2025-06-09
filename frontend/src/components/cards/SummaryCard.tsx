@@ -1,7 +1,10 @@
 import { getInitials } from '@/lib/helper'
 import { Trash2 } from 'lucide-react'
+import { useState } from 'react'
+import DeleteAlert from '../modals/DeleteAlert'
 
 interface SummaryCardProps {
+  id:string
   colors: string
   role: string
   topicsToFocus: string
@@ -10,10 +13,11 @@ interface SummaryCardProps {
   description: string
   lastUpdated: string
   onSelect: () => void
-  onDelete: () => void
 }
 
-const SummaryCard = ({ colors, role, topicsToFocus, experience, questions, description, lastUpdated, onSelect, onDelete }: SummaryCardProps) => {
+const SummaryCard = ({ id,colors, role, topicsToFocus, experience, questions, description, lastUpdated, onSelect }: SummaryCardProps) => {
+  const [open, setOpen] = useState(false);
+  // console.log(open);
   return (
     <div className='bg-white border border-gray-300/40 rounded-xl p-2 overflow-hidden cursor-pointer hover:shadow-xl shadow-gray-100 relative group' onClick={onSelect}>
       <div className='rounded-lg cursor-pointer p-4 relative'
@@ -24,7 +28,7 @@ const SummaryCard = ({ colors, role, topicsToFocus, experience, questions, descr
               {getInitials(role)}
             </span>
           </div>
-
+ 
           {/* content container */}
           <div className='flex-grow'>
             <div className='flex justify-between items-start'>
@@ -36,9 +40,13 @@ const SummaryCard = ({ colors, role, topicsToFocus, experience, questions, descr
           </div>
         </div>
         <button className='hidden group-hover:flex items-center gap-2 text-xs text-rose-500 bg-rose-50 px-4 py-2 rounded text-nowrap border border-rose-100 hover:border-rose-200 cursor-pointer absolute top-0 right-0'
-          onClick={(e) => { e.stopPropagation(); onDelete() }}>
-          <Trash2 size={20}/>
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen(true);
+          }}>
+            <Trash2/>
         </button>
+        <DeleteAlert id={id} open={open} setOpen={setOpen} />
       </div>
       <div className='px-3 pb-3 '>
         <div className='flex items-center gap-3 mt-3'>

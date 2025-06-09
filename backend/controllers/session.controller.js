@@ -59,13 +59,15 @@ exports.getSessionById = async(req,res) =>{
 
 exports.deleteSession = async(req,res) =>{
   try {
-    const session = await Session.findByIdAndDelete(req.params.id);
+    const session = await Session.findById(req.params.id);
     if(!session){
       return res.status(404).json({success:false,message:"Session not found"})
     }
-    if(session.user.toString() !== req.user._id){
+    console.log(session.user.toString() !== req.user._id.toString(),session.user,req.user._id);
+    if(session.user.toString() !== req.user._id.toString()){
       return res.status(403).json({success:false,message:"You are not authorized to delete this session"})
     }
+    
     await Question.deleteMany({session:req.params.id});
     await Session.deleteOne({_id:session._id});
     res.status(200).json({success:true,message:"Session deleted successfully"});

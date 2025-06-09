@@ -39,7 +39,7 @@ const generateConceptExplaination = async (req,res)=>{
 
     const cleanText = rawText.replace(/^```json\s*/,"").replace(/```$/,"").trim();
     const data = JSON.parse(cleanText);
-    res.json(data);
+    res.json({data});
   } catch (error) {
     console.log(error);
     res.status(500).json({message:"Error generating concept explanation"});

@@ -15,7 +15,7 @@ declare type createSessionPayload = {
   experience: string
   topicToFocus: string
   description?: string
-  questions: [{question:string,answer:string}]
+  questions: QuestionsType[]
 }
 
 declare type AllSessionsRes = {

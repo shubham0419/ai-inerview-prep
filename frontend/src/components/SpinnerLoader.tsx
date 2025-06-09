@@ -1,9 +1,9 @@
 import { Loader } from 'lucide-react'
 import React from 'react'
 
-const SpinnerLoader = () => {
+const SpinnerLoader = ({size}:{size?:number}) => {
   return (
-    <Loader className='animate-spin'/>
+    <Loader size={size?size:24} className='animate-spin'/>
   )
 }
 
