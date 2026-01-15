@@ -27,7 +27,6 @@ app.use('/api/questions',questionRoutes);
 app.use("/api/ai/generate-questions",protect, generateInterviewQuestion);
 app.use("/api/ai/generate-explanation", protect,generateConceptExplaination);
 
-
 app.listen(process.env.PORT || 4000, () => {
   console.log("Server running on port " + process.env.PORT);
   connectDB()
