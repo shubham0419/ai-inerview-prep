@@ -45,4 +45,54 @@ const conceptExplainPromt = (question) => `
   }
   Important: Do NOT add any extra text outside the JSON format. Only return valid JSON.`;
 
-module.exports = { questionAnswerPromt, conceptExplainPromt };
+const generalAtsPrompt = (resumeText) => `
+  You are an expert ATS (Applicant Tracking System) scanner and Resume Coach.
+
+  Task:
+  - Analyze the following resume text.
+  - Provide a score out of 100 based on formatting, content quality, and impact.
+  - Identify missing skills or sections.
+  - Provide actionable suggestions to improve the resume.
+  - Return the result as a valid JSON object in the following format:
+  {
+    "score": 85,
+    "missingSkills": ["Item 1", "Item 2"],
+    "suggestions": ["Tip 1", "Tip 2"],
+    "summary": "A brief summary of the resume's strength."
+  }
+  
+  Resume Text:
+  "${resumeText}"
+
+  Important: Do NOT add any extra text outside the JSON format. Only return valid JSON.`;
+
+const jobSpecificAtsPrompt = (resumeText, jobDescription) => `
+  You are an expert ATS (Applicant Tracking System) scanner.
+
+  Task:
+  - Analyze the resume against the provided Job Description (JD).
+  - Provide a match percentage score out of 100.
+  - Identify keywords/skills from the JD that are missing in the resume.
+  - Provide suggestions on how to tailor the resume for this specific job.
+  - Return the result as a valid JSON object in the following format:
+  {
+    "score": 75,
+    "matchPercentage": 75,
+    "missingKeywords": ["Keyword 1", "Keyword 2"],
+    "suggestions": ["Tip 1", "Tip 2"]
+  }
+
+  Job Description:
+  "${jobDescription}"
+
+  Resume Text:
+  "${resumeText}"
+
+  Important: Do NOT add any extra text outside the JSON format. Only return valid JSON.`;
+
+module.exports = {
+  questionAnswerPromt,
+  conceptExplainPromt,
+  generalAtsPrompt,
+  jobSpecificAtsPrompt,
+};
